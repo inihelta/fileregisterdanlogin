@@ -94,9 +94,32 @@ $registerHtml = <<<HTML
 </html>
 HTML;
 
+// === KODE UNTUK DASHBOARD ===
+$dashboardHtml = <<<HTML
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Selamat Datang di Dashboard, {{ Auth::user()->name ?? 'Pengguna' }}!</h2>
+
+    <p>Halo, <strong>{{ Auth::user()->name ?? 'Pengguna' }}</strong> ({{ Auth::user()->email ?? '' }}). Anda berhasil login ke sistem.</p>
+
+    <div style="margin-top: 20px;">
+        <a href="{{ route('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
+HTML;
+
 // Proses Pembuatan File
 file_put_contents($dir . '/login.blade.php', $loginHtml);
 echo "File login.blade.php berhasil dibuat!\n";
 
 file_put_contents($dir . '/register.blade.php', $registerHtml);
 echo "File register.blade.php berhasil dibuat!\n";
+
+file_put_contents($dir . '/dashboard.blade.php', $dashboardHtml);
+echo "File dashboard.blade.php berhasil dibuat!\n";
